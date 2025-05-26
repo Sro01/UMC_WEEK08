@@ -6,10 +6,13 @@ import { useInView } from "react-intersection-observer";
 import LpCard from "../components/LpCard/LpCard";
 import LpCardSkeletonList from "../components/LpCard/LpCardSkeletonList";
 import LpCreateModal from "../components/LpCreateModal.tsx";
+import useDebounce from "../hooks/useDebounce.ts";
+import { SEARCH_DEBOUNCE_DELAY } from "../constants/delay.ts";
 
 const Homepage = () => {
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState<PAGINATION_ORDER>(PAGINATION_ORDER.desc);
+  const deboncedValue = useDebounce(search, SEARCH_DEBOUNCE_DELAY);
   const {
     data: lps,
     isFetching,
@@ -17,7 +20,7 @@ const Homepage = () => {
     isPending,
     fetchNextPage,
     isError,
-  } = useGetInfiniteLpList(50, search, order);
+  } = useGetInfiniteLpList(50, deboncedValue, order);
 
   /**
    * ref: 특정한 HTML 요소를 감시
