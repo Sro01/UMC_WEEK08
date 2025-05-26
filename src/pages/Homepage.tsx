@@ -8,6 +8,7 @@ import LpCardSkeletonList from "../components/LpCard/LpCardSkeletonList";
 import LpCreateModal from "../components/LpCreateModal.tsx";
 import useDebounce from "../hooks/useDebounce.ts";
 import { SEARCH_DEBOUNCE_DELAY } from "../constants/delay.ts";
+import useThrottle from "../hooks/useThrottle.ts";
 
 const Homepage = () => {
   const [search, setSearch] = useState("");
@@ -30,11 +31,13 @@ const Homepage = () => {
     threshold: 0, // 화면에 노출되는 정보 (Etnry point 조절)
   });
 
+  const throttledInView = useThrottle(inView, 500); // 500ms 딜레이로 inView 값을 스로틀링
+
   useEffect(() => {
-    if (inView) {
+    if (throttledInView) {
       !isFetching && hasNextPage && fetchNextPage();
     }
-  }, [inView, isFetching, hasNextPage, fetchNextPage]);
+  }, [throttledInView, isFetching, hasNextPage, fetchNextPage]);
 
   if (isError) {
     return <h1>Error!</h1>;
