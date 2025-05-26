@@ -1,0 +1,482 @@
+.page {
+  /* margin: 100px; */
+  padding: 120px;
+  width: 100vw;
+}
+
+.mypage {
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  justify-content: center; /* 세로 방향 가운데 */
+  align-items: center; /* 가로 방향 가운데 */
+  text-align: center;
+}
+
+.mypage-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  width: 100%;
+  background-color: white;
+  /* height: 50px; */
+  overflow: auto;
+  padding: 0 20px;
+  /* border-bottom: black solid 1px; */
+  z-index: 50;
+}
+
+.middle-text {
+  vertical-align: middle;
+}
+
+.nav-text {
+  font-size: 40px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+footer {
+  width: 100vw;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  border-top: darkgray solid 1px;
+}
+
+.footer-text {
+  margin-left: 30px;
+  font-size: 12px;
+  color: rgb(60, 60, 60);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 기본 5열 고정 */
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1100px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card-skeleton {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 3px;
+  padding: 0;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  background-color: lightgray;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 3px;
+  padding: 0;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.card .thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.card:hover .card-overlay {
+  opacity: 1; /* 카드 호버 시 오버레이 보이기 */
+  pointer-events: auto; /* 오버레이 위에서 이벤트 발생 가능하도록 */
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  line-height: 1.3;
+}
+
+.card-date,
+.card-likes {
+  font-size: 13px; /* 날짜, 좋아요 폰트 크기 */
+  margin: 2px 0;
+  display: flex; /* 아이콘과 텍스트 정렬을 위해 */
+  align-items: center;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex-grow: 1;
+  margin: 0 20px;
+  width: 200px;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* LP Detail Page */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lp-title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+.lp-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.lp-disc {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  position: relative;
+
+  animation: spin 5s linear infinite;
+}
+
+.lp-center-label {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid rgb(158, 158, 158);
+  box-shadow: inset 0 4px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Lp Create Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* 검은색 + 80% 불투명도 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-img {
+  display: flex;
+  justify-content: center; /* 수평 정렬 */
+  align-items: center; /* 수직 정렬 (필요 시) */
+  width: 200px; /* 부모 form 전체 너비를 차지하게 */
+  margin: 0 auto 30px auto; /* form 내부에서 가로 가운데 */
+}
+.modal-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.modal-form {
+  display: flex;
+  gap: 8px;
+}
+
+.modal-input {
+  flex-grow: 1;
+  padding: 4px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: 40px;
+  padding-left: 10px;
+}
+
+.add-button {
+  margin: 5px 0;
+  flex-grow: 1;
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+  background-color: #698fb9;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-button:hover {
+  color: #698fb9;
+  background-color: white;
+  border: #698fb9 2px solid;
+}
+
+.add-lp-button {
+  margin: 5px 0;
+  padding: 6px 10px;
+  border-radius: 5px;
+  color: #698fb9;
+  border: #698fb9 2px solid;
+  font-weight: 600;
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-lp-button:hover {
+  color: white;
+  background-color: #698fb9;
+}
+
+/* Comment Form */
+.comment-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* 내부 요소를 동일 높이로 맞춤 */
+  gap: 8px;
+  margin: 30px 0;
+}
+
+.comment-form textarea {
+  flex: 1;
+  resize: none;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.comment-form button {
+  padding: 0 16px;
+  background-color: #698fb9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  white-space: nowrap;
+  height: 50px;
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
+/* Comment List */
+.comment-list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 16px; */
+}
+
+.comment-item {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 15px;
+}
+
+.comment-left {
+  flex: 0 0 48px;
+  margin-right: 15px;
+}
+
+.comment-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-avatar.placeholder {
+  background-color: #ccc;
+}
+
+.comment-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+
+.comment-content {
+  margin-top: 8px;
+}
+
+.comment-edit-textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  resize: vertical;
+}
+
+.comment-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.comment-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-button.cancel {
+  background-color: #e0e0e0;
+}
+
+.comment-button.save {
+  background-color: #698fb9;
+  color: white;
+}
+
+.comment-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.comment-action {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* LP Detail Page */
+.lp-detail-page {
+  padding: 120px 300px;
+  width: 100vw;
+}
+
+.author-info {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0px 20px 20px 20px;
+  border-bottom: solid 1px #ccc;
+  gap: 20px;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-avatar.placeholder {
+  background-color: #ccc;
+}
+
+.like-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  border: #777 solid 1.5px;
+  border-radius: 10px;
+  width: 100px;
+  padding: 0px 20px 8px 20px;
+}
+
+.like-count {
+  font-weight: 600;
+}
